@@ -4,7 +4,7 @@ Configuration can be launched from the **Tools -> Settings** menu option.
 
 ## Lab1
 
-### ![alt](https://icons8.com/icon/8zaOgCnPxZ3K/push-pin) Problem1
+### Problem1
 
 ![plot](./Day1/Screenshot%20from%202022-12-28%2013-14-58.png)
 
