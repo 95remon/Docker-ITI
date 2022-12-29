@@ -4,7 +4,7 @@
 
 ### Problem1
 
-![plot](./Day1/Screenshot%20from%202022-12-28%2013-14-58.png)
+![plot](./images/Screenshot%20from%202022-12-28%2013-14-58.png)
 
 
 ```bash
@@ -19,7 +19,7 @@ $ sduo docker rmi feb5d9fea6a5
 
 ### Problem2
 
-![plot](Day1/Screenshot%20from%202022-12-28%2013-16-04.png)
+![plot](images/Screenshot%20from%202022-12-28%2013-16-04.png)
 
 
 ```bash
@@ -38,7 +38,7 @@ $ sudo docker container prune
 
 ### Problem3
 
-![plot](./Day1/Screenshot%20from%202022-12-28%2013-16-32.png)
+![plot](./images/Screenshot%20from%202022-12-28%2013-16-32.png)
 
 
 ```bash
@@ -55,7 +55,7 @@ $ service start nginx
 
 ### Problem4
 
-![plot](./Day1/Screenshot%20from%202022-12-28%2013-16-58.png)
+![plot](./images/Screenshot%20from%202022-12-28%2013-16-58.png)
 
 
 ```bash
@@ -70,7 +70,7 @@ $ sudo docker build -t remonlouis_image .
 ```
 ### Problem5
 
-![plot](./Day1/Screenshot%20from%202022-12-28%2013-17-31.png)
+![plot](./images/Screenshot%20from%202022-12-28%2013-17-31.png)
 
 ```Bash
 $ sudo docker run --name app-database9 -v mysql_data:/var/lib/mysql -p 3040:3306 -e MYSQL_ROOT_PASSWORD=P4sSw0rd0! -d mysql
