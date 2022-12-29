@@ -88,6 +88,32 @@ $ sudo docker run --name app-database9 -v mysql_data:/var/lib/mysql -p 3040:3306
 ![plot](./images/Screenshot%20from%202022-12-29%2014-57-31.png)
 
 ### P1
-```Dockerfile
 
+
+```Bash
+#created html page and change add dummy paragraph with name index.html
+#Make tar file of index.html
+$ tar -cvf index.tar index.html
+
+```
+
+
+```Dockerfile
+FROM ubuntu:23.04
+
+RUN apt-get update
+RUN apt-get install nginx -y
+
+COPY index.html /var/www/html
+ADD index.tar /var/www/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+
+```
+
+```Bash
+$ sudo docker build -t mynginx:v1.0 .
+$ sudo docker run -d -p 9091:80 mynginx:v1.0
 ```
