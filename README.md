@@ -65,6 +65,12 @@ $ toch RemonLouis.html
 $ echo "Remon Louis" >> RemonLouis.html 
 $ sudo docker images
 $ sudo docker commit ed579e1e3144 testimage:version1.0
+```
+```Dockerfile
+FROM nginx
+CMD [ "Remon Louis" ]
+```
+```bash
 # Docker file created
 $ sudo docker build -t remonlouis_image .
 ```
@@ -74,4 +80,14 @@ $ sudo docker build -t remonlouis_image .
 
 ```Bash
 $ sudo docker run --name app-database9 -v mysql_data:/var/lib/mysql -p 3040:3306 -e MYSQL_ROOT_PASSWORD=P4sSw0rd0! -d mysql
+```
+
+
+## Lab2
+
+![plot](./images/Screenshot%20from%202022-12-29%2014-57-31.png)
+
+### P1
+```Dockerfile
+
 ```
