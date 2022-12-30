@@ -1,12 +1,16 @@
-FROM ubuntu:23.04
+# use a light image of node
+FROM node:alpine3.16
 
-RUN apt-get update
-RUN apt-get install nginx -y
+WORKDIR /app
 
-COPY index.html /var/www/html
-ADD index.tar /var/www/html
+# copy src files to the Dist
+COPY react-app/package*.json ./
 
-EXPOSE 80
+# install packages
+RUN npm install
 
-CMD ["nginx", "-g", "daemon off;"]
+# copy source code to the dist
+COPY react-app/ .
 
+# start app
+CMD [ "npm","start" ]

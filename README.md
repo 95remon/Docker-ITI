@@ -117,3 +117,6 @@ CMD ["nginx", "-g", "daemon off;"]
 $ sudo docker build -t mynginx:v1.0 .
 $ sudo docker run -d -p 9091:80 mynginx:v1.0
 ```
+
+### P2
+
