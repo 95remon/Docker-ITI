@@ -236,3 +236,28 @@ $ sudo docker run -it --name remon-multistage-app -p 6070:80 my-app:v2.0
    or this container, disable all networking. Usually used in conjunction with a custom network driver. none is not available for swarm services.
 7. Network blugins :
    You can install and use third-party network plugins with Docker. These plugins are available from Docker Hub or from third-party vendors.
+
+### p4
+
+
+```bash
+# create a bridge network
+$ sudo docker network create my-net
+
+# create 2 containers and attatch them to bridge network I created
+$ sudo docker run -d --name con1 --network my-net nginx
+$ sudo docker run -d --name con2 --network my-net nginx
+
+# inspect the network to make sure that the 2 containers are already attached to it
+
+$ sudo docker network inspect my-net
+
+# open first container to install ping package
+$ sudo docker container exec -it con1 bash
+$ apt-get update
+$ apt-get install inetutils-ping
+
+# back to my local machine and try to ping second container from the first one
+$ sudo docker exec -ti con1 ping con2
+
+```
