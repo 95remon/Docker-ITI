@@ -261,3 +261,8 @@ $ apt-get install inetutils-ping
 $ sudo docker exec -ti con1 ping con2
 
 ```
+
+## Lab3
+![plot](./images/Screenshot%20from%202022-12-30%2020-58-29.png)
+
+### p1
