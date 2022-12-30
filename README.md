@@ -81,7 +81,8 @@ $ sudo docker build -t remonlouis_image .
 ```Bash
 $ sudo docker run --name app-database9 -v mysql_data:/var/lib/mysql -p 3040:3306 -e MYSQL_ROOT_PASSWORD=P4sSw0rd0! -d mysql
 ```
-
+---
+---
 
 ## Lab2
 
