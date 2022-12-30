@@ -120,3 +120,49 @@ $ sudo docker run -d -p 9091:80 mynginx:v1.0
 
 ### P2
 
+\# install node local on my machine and then create the react app
+
+```Bash
+$ sudo apt install nodejs
+$ sudo apt install npm
+$ sudo npm i -g npx
+$ sudo npx create-react-app my-app
+```
+\# ---- I ignored react project node-modules
+\# create Dockerfile
+
+```Dockerfile
+# use a light image of node
+FROM node:alpine3.16
+
+# make directory (app) and cd the dir
+WORKDIR /app
+
+# copy src files to the Dist
+COPY my-app/package*.json ./
+
+# install packages
+RUN npm install
+
+# copy source code to the dist
+COPY my-app/ .
+
+# Port 3000
+EXPOSE 3000
+
+# start app
+CMD [ "npm" , "start" ]
+
+```
+\# bulid the image from this Dockerfile
+
+```Bash
+$ sudo docker build -t remon-app:v1.0 .
+```
+\# run a container from this generated image
+
+
+```Bash
+$ sudo docker run -it --name remon-app -p 3009:3000 remon-app:v1.0
+```
+\# check localhost:3009 and it is up and running
