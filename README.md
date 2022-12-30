@@ -121,6 +121,8 @@ $ sudo docker run -d -p 9091:80 mynginx:v1.0
 
 ### P2
 
+1. part1-SingleStage
+
 \# install node local on my machine and then create the react app
 
 ```Bash
@@ -129,7 +131,7 @@ $ sudo apt install npm
 $ sudo npm i -g npx
 $ sudo npx create-react-app my-app
 ```
-\# ---- I ignored react project node-modules
+\# ---- I ignored react project node-modules file
 \# create Dockerfile
 
 ```Dockerfile
@@ -167,3 +169,52 @@ $ sudo docker build -t remon-app:v1.0 .
 $ sudo docker run -it --name remon-app -p 3009:3000 remon-app:v1.0
 ```
 \# check localhost:3009 and it is up and running
+
+
+2. part2-MultiStage
+
+
+```Dockerfile
+# use a light image of node
+FROM node:alpine3.16 AS builderstage
+
+# make directory (app) and cd the dir
+WORKDIR /app
+
+# copy src files to the Dist
+COPY my-app/package*.json ./
+
+# install packages
+RUN npm install
+
+# copy source code to the dist
+COPY my-app/ .
+
+# Port 3000
+EXPOSE 3000
+
+# start app
+RUN npm run build
+
+
+# use the nginx Base Image
+FROM nginx:alpine
+
+# copy the bulid result from the builderstage
+COPY --from=builderstage /app/build /usr/share/nginx/html
+
+
+# prot 80 for nginx
+EXPOSE 80
+
+# run nginx
+CMD [ "nginx" , "-g" , "daemon off;" ]
+
+```
+
+```Bash
+$ sudo docker build -t my-app:v2.0 .
+$ sudo docker run -it --name remon-multistage-app -p 6070:80 my-app:v2.0
+```
+
+\# check localhost:6070 and it is up and running

@@ -1,5 +1,5 @@
 # use a light image of node
-FROM node:alpine3.16
+FROM node:alpine3.16 AS builderstage
 
 # make directory (app) and cd the dir
 WORKDIR /app
@@ -17,4 +17,19 @@ COPY my-app/ .
 EXPOSE 3000
 
 # start app
-CMD [ "npm" , "start" ]
+RUN npm run build
+
+
+# use the nginx Base Image
+FROM nginx:alpine
+
+# copy the bulid result from the builderstage
+COPY --from=builderstage /app/build /usr/share/nginx/html
+
+
+# prot 80 for nginx
+EXPOSE 80
+
+# run nginx
+CMD [ "nginx" , "-g" , "daemon off;" ]
+
