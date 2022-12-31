@@ -289,3 +289,5 @@ services:
 ```bash
 $ sudo docker compose up -d
 ```
+
+\# checked the port localhost port 5066  nad it is up and running 
