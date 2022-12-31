@@ -266,3 +266,22 @@ $ sudo docker exec -ti con1 ping con2
 ![plot](./images/Screenshot%20from%202022-12-30%2020-58-29.png)
 
 ### p1
+
+\# make a docker-compse.yml file contains the below code to make a container based on the dockerfile of the multistaging concept 
+
+```dockerfile
+version: '3.8'
+
+services:
+  node:
+    container_name: remon-multistage-compose
+    build: 
+      dockerfile: Dockerfile-lab2-problem2-part2
+    ports:
+      - "5066:80"
+```
+\# then run the following command 
+
+```bash
+$ sudo docker compose up -d
+```

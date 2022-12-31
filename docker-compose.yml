@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  node:
+    container_name: remon-multistage-compose
+    build: 
+      dockerfile: Dockerfile-lab2-problem2-part2
+    ports:
+      - "5066:80"
