@@ -291,3 +291,62 @@ $ sudo docker compose up -d
 ```
 
 \# checked the localhost port 5066 and it is up and running 
+
+
+### p2
+
+\# First creat a dir named with python-app-files and move app.py and requirements.txt into it
+\# Create the docker file with below code
+
+```dockerfile
+# get python base image
+FROM python:3.7-alpine
+
+# make a code dir and cd into it
+WORKDIR /code
+
+# set the enterypoit file  to the flask project   app.py
+ENV FLASK_APP=app.py
+
+# set the Host
+ENV FLASK_RUN_HOST=0.0.0.0
+
+RUN apk add --no-cache gcc musl-dev linux-headers
+
+#copy requirments file to the container
+COPY requirements.txt requirements.txt
+
+# install the requirements
+RUN pip install -r requirements.txt
+
+# Flask listen on port 5000
+EXPOSE 5000
+
+#copy project files
+COPY . .
+
+# run the flask project 
+CMD ["flask", "run"]
+
+```
+
+\# then create the docker compose file also with the below code 
+
+```dockerfile
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+  redis:
+    image: "redis:alpine"
+````
+
+\# then run the following command 
+
+```bash
+$ sudo docker compose up -d
+```
+
+\# checked the localhost port 8000 and it is up and running 
