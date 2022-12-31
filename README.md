@@ -290,4 +290,4 @@ services:
 $ sudo docker compose up -d
 ```
 
-\# checked the localhost port 5066  nad it is up and running 
+\# checked the localhost port 5066 and it is up and running 
